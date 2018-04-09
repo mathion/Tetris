@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="63e381b8-0478-440c-be40-bf19d46bdaf4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tetris.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,8 +53,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+            <state relative-caret-position="52">
+              <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -126,11 +123,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="280" />
-    <option name="y" value="-4" />
-    <option name="width" value="1392" />
-    <option name="height" value="996" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="53" />
+    <option name="y" value="24" />
+    <option name="width" value="934" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -146,6 +143,11 @@
             <path>
               <item name="Tetris" type="b2602c69:ProjectViewProjectNode" />
               <item name="csc143" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tetris" type="b2602c69:ProjectViewProjectNode" />
+              <item name="csc143" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Tetris" type="b2602c69:ProjectViewProjectNode" />
@@ -263,7 +265,7 @@
       <workItem from="1522858445482" duration="1585000" />
       <workItem from="1522860083029" duration="945000" />
       <workItem from="1522950923349" duration="6032000" />
-      <workItem from="1523289582986" duration="3611000" />
+      <workItem from="1523289582986" duration="3932000" />
     </task>
     <task id="LOCAL-00001" summary="Added idea files to gitignore and set google style">
       <created>1522693309629</created>
@@ -279,14 +281,35 @@
       <option name="project" value="LOCAL" />
       <updated>1523291481319</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="removed intellij files and completed style reformat.">
+      <created>1523298143466</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1523298143466</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed Typo.">
+      <created>1523298211127</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1523298211127</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixed Typo.">
+      <created>1523298284544</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1523298284544</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17195000" />
+    <option name="totallyTimeSpent" value="17516000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="53" y="-4" width="1867" height="1084" extended-state="6" />
+    <frame x="53" y="24" width="934" height="1056" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -299,11 +322,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31864753" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32805908" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18585967" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37152034" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.62192625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -328,7 +351,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added idea files to gitignore and set google style" />
     <MESSAGE value="Added files from professors website.  Added left and right functionality.  Started to reformat the code to meet google java standard." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added files from professors website.  Added left and right functionality.  Started to reformat the code to meet google java standard." />
+    <MESSAGE value="removed intellij files and completed style reformat." />
+    <MESSAGE value="Fixed Typo." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Typo." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -516,8 +541,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+        <state relative-caret-position="52">
+          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
