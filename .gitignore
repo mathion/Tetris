@@ -27,3 +27,6 @@ hs_err_pid*
 
 # Compiled Files
 out/
+
+# intellij idea files
+.idea/

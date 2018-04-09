@@ -86,14 +86,14 @@ public class Square {
       // currently doesn't support checking LEFT or RIGHT
       // MODIFY so that it correctly returns if it can move left or right
       case LEFT:
-        if (col == (0) || grid.isSet(row,col + -1)){
+        if (col == (0) || grid.isSet(row, col + -1)) {
           move = false;
         }
         break;
       case RIGHT:
-        if (col == (Grid.WIDTH -1) || grid.isSet(row,col + 1)){
-        move = false;
-      }
+        if (col == (Grid.WIDTH - 1) || grid.isSet(row, col + 1)) {
+          move = false;
+        }
         break;
     }
     return move;
