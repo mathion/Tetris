@@ -57,16 +57,16 @@ public class LShape {
   /**
    * Moves the piece if possible Freeze the piece if it cannot move down anymore
    *
-   * @param direction the direction to move
+   * @param command the direction to move
    */
-  public void move(Direction direction) {
-    if (canMove(direction)) {
+  public void move(Commands command) {
+    if (canMove(command)) {
       for (int i = 0; i < PIECE_COUNT; i++) {
-        square[i].move(direction);
+        square[i].move(command);
       }
     }
     // if we couldn't move, see if because we're at the bottom
-    else if (direction == Direction.DOWN) {
+    else if (command == Commands.DOWN) {
       ableToMove = false;
     }
   }
@@ -95,7 +95,7 @@ public class LShape {
   /**
    * Returns if this piece can move in the given direction
    */
-  public boolean canMove(Direction direction) {
+  public boolean canMove(Commands command) {
     if (!ableToMove) {
       return false;
     }
@@ -103,7 +103,7 @@ public class LShape {
     // Each square must be able to move in that direction
     boolean answer = true;
     for (int i = 0; i < PIECE_COUNT; i++) {
-      answer = answer && square[i].canMove(direction);
+      answer = answer && square[i].canMove(command);
     }
 
     return answer;

@@ -8,6 +8,6 @@
  *
  * @author CSC 143
  */
-public enum Direction {
-  LEFT, RIGHT, DOWN
+public enum Commands {
+  LEFT, RIGHT, DOWN, FAST_DROP
 }

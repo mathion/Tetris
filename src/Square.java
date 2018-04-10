@@ -66,9 +66,9 @@ public class Square {
   /**
    * Returns true if this Square can move 1 spot in direction d
    *
-   * @param direction the direction to test for possible move
+   * @param commands the direction to test for possible move
    */
-  public boolean canMove(Direction direction) {
+  public boolean canMove(Commands commands) {
     if (!ableToMove) {
       return false;
     }
@@ -76,7 +76,7 @@ public class Square {
     boolean move = true;
     // if the given direction is blocked, we can't move
     // remember to check the edges of the grid
-    switch (direction) {
+    switch (commands) {
       case DOWN:
         if (row == (Grid.HEIGHT - 1) || grid.isSet(row + 1, col)) {
           move = false;
@@ -106,11 +106,11 @@ public class Square {
    *
    * If it attempts to move DOWN and it can't, the square is frozen and cannot move anymore
    *
-   * @param direction the direction to move
+   * @param command the direction to move
    */
-  public void move(Direction direction) {
-    if (canMove(direction)) {
-      switch (direction) {
+  public void move(Commands command) {
+    if (canMove(command)) {
+      switch (command) {
         case DOWN:
           row = row + 1;
           break;

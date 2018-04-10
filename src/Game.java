@@ -47,9 +47,15 @@ public class Game {
    *
    * @param the direction to move
    */
-  public void movePiece(Direction direction) {
+  public void movePiece(Commands command) {
     if (currentPiece != null) {
-      currentPiece.move(direction);
+      if (command == Commands.FAST_DROP) {
+        while (currentPiece.canMove(Commands.DOWN)) {
+          currentPiece.move(Commands.DOWN);
+        }
+      } else {
+        currentPiece.move(command);
+      }
     }
     updatePiece();
     display.update();
@@ -88,12 +94,12 @@ public class Game {
   private void updatePiece() {
     if (currentPiece == null) {
       // CREATE A NEW PIECE HERE
-      currentPiece = new LShape(1,Grid.WIDTH/2 -1, grid);
+      currentPiece = new LShape(1, Grid.WIDTH / 2 - 1, grid);
     }
 
     // set Grid positions corresponding to frozen piece
     // and then release the piece
-    else if (!currentPiece.canMove(Direction.DOWN)) {
+    else if (!currentPiece.canMove(Commands.DOWN)) {
       Point[] p = currentPiece.getLocations();
       Color c = currentPiece.getColor();
       for (int i = 0; i < p.length; i++) {

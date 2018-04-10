@@ -76,6 +76,12 @@ public class Grid {
    * empty
    */
   public void checkRows() {
+    int rows_CLeared;
+    for (int i = 0; i < board.length; i++) {
+      for (int j = 0; j < board[i].length; j++) {
+
+      }
+    }
   }
 
   /**
