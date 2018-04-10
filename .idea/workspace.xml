@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63e381b8-0478-440c-be40-bf19d46bdaf4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/TetrisTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csc143.iml" beforeDir="false" afterPath="$PROJECT_DIR$/csc143.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LShape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Square.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,10 +32,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
+            <state relative-caret-position="145">
               <caret line="60" column="6" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
             </state>
           </provider>
@@ -92,10 +84,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tetris.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tetris.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tetris.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
+            <state relative-caret-position="90">
               <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
             </state>
           </provider>
@@ -314,7 +306,7 @@
       <workItem from="1522858445482" duration="1585000" />
       <workItem from="1522860083029" duration="945000" />
       <workItem from="1522950923349" duration="6032000" />
-      <workItem from="1523289582986" duration="9430000" />
+      <workItem from="1523289582986" duration="9731000" />
     </task>
     <task id="LOCAL-00001" summary="Added idea files to gitignore and set google style">
       <created>1522693309629</created>
@@ -358,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523298452934</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added fast drop.  Renamed directions to commands.">
+      <created>1523386342277</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1523386342277</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -376,11 +375,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23014000" />
+    <option name="totallyTimeSpent" value="23315000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="-4" width="1867" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -424,7 +422,8 @@
     <MESSAGE value="removed intellij files and completed style reformat." />
     <MESSAGE value="Fixed Typo." />
     <MESSAGE value="Updated git ignore to remove correct intellij files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated git ignore to remove correct intellij files." />
+    <MESSAGE value="Added fast drop.  Renamed directions to commands." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added fast drop.  Renamed directions to commands." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -634,17 +633,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/Tetris.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="60" column="6" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
+        <state relative-caret-position="90">
+          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tetris.java">
+    <entry file="file://$PROJECT_DIR$/src/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        <state relative-caret-position="145">
+          <caret line="60" column="6" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
         </state>
       </provider>
     </entry>
