@@ -5,11 +5,11 @@ import java.util.Queue;
 
 /**
  * This is the Tetris board represented by a (HEIGHT - by - WIDTH) matrix of Squares.
- *
+ * <p>
  * The upper left Square is at (0,0). The lower right Square is at (HEIGHT -1, WIDTH -1).
- *
+ * <p>
  * Given a Square at (x,y) the square to the left is at (x-1, y) the square below is at (x, y+1)
- *
+ * <p>
  * Each Square has a color. A white Square is EMPTY; any other color means that spot is occupied
  * (i.e. a piece cannot move over/to an occupied square). A grid will also remove completely full
  * rows.
@@ -18,20 +18,14 @@ import java.util.Queue;
  */
 public class Grid {
 
-  private Square[][] board;
-
   // Width and Height of Grid in number of squares
   public static final int HEIGHT = 20;
-
   public static final int WIDTH = 10;
-
-  private static final int BORDER = 5;
-
   public static final int LEFT = 100; // pixel position of left of grid
-
   public static final int TOP = 50; // pixel position of top of grid
-
   public static final Color EMPTY = Color.WHITE;
+  private static final int BORDER = 5;
+  private Square[][] board;
 
   /**
    * Creates the grid
@@ -73,52 +67,33 @@ public class Grid {
 
   /**
    * Checks for and remove all solid rows of squares.
-   *
+   * <p>
    * If a solid row is found and removed, all rows above it are moved down and the top row set to
    * empty
    */
   public void checkRows() {
-
-    Queue<Integer> fullRows = findFullRows();
-    boolean rowsRemoved = false;
-    while (fullRows.peek()!=null){
-      removeRow(fullRows.remove());
-      rowsRemoved = true;
-    }
-
-    if (rowsRemoved){
-      for (int i = board.length-1; i > 0; i--) {
-        if (rowIsEmpty(i)){
-          swapRows(i, i-1);
+    for (int i = 0; i < board.length; i++) {
+      if (rowIsFull(i)) {
+        removeRow(i);
+        for (int j = i; j > 0; j--) {
+          if (rowIsEmpty(j)) {
+            swapRows(j, j - 1);
+          }
         }
       }
     }
-
-
   }
 
-  /**
-   * Finds all the full rows on the board.
-   * @return returns a Queue of the integer indexes of the full rows
-   */
-  private Queue<Integer> findFullRows(){
-    Queue<Integer> fullRows = new LinkedList<>();
-    for (int i = 0; i < board.length; i++) {
-      if (rowIsFull(i)){
-      fullRows.add(i);
-      }
-    }
-    return fullRows;
-  }
 
   /**
    * Checks if the given row is full.
+   *
    * @param row the row to check in the grid
    * @return returns true if the row is full
    */
-  private boolean rowIsFull(int row){
+  private boolean rowIsFull(int row) {
     for (int i = 0; i < board[row].length; i++) {
-      if (!this.isSet(row,i)){
+      if (!this.isSet(row, i)) {
         return false;
       }
     }
@@ -127,12 +102,13 @@ public class Grid {
 
   /**
    * Checks if the given row is empty.
+   *
    * @param row the row to check in the grid
    * @return returns true if the row is empty
    */
-  private boolean rowIsEmpty(int row){
+  private boolean rowIsEmpty(int row) {
     for (int i = 0; i < board[row].length; i++) {
-      if (this.isSet(row,i)){
+      if (this.isSet(row, i)) {
         return false;
       }
     }
@@ -141,21 +117,23 @@ public class Grid {
 
   /**
    * Sets all of the squares in the given row to empty color.
+   *
    * @param row the row of squares to remove
    */
-  private void removeRow(int row){
-    for (Square square:
-    board[row]) {
+  private void removeRow(int row) {
+    for (Square square :
+        board[row]) {
       square.setColor(EMPTY);
     }
   }
 
   /**
    * Swaps the colors of each square in two rows
+   *
    * @param row1 the first row to swap
    * @param row2 the second row to swap
    */
-  private void swapRows(int row1, int row2){
+  private void swapRows(int row1, int row2) {
     Color[] rowColors = new Color[board[row1].length];
 
     for (int i = 0; i < board[row1].length; i++) {

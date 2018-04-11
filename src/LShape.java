@@ -16,15 +16,12 @@ import java.awt.Point;
  */
 public class LShape {
 
-  private boolean ableToMove; // can this piece move
-
-  private Square[] square; // the squares that make up this piece
-
-  // Made up of PIECE_COUNT squares
-  private Grid grid; // the board this piece is on
-
   // number of squares in one Tetris game piece
   private static final int PIECE_COUNT = 4;
+  private boolean ableToMove; // can this piece move
+  private Square[] square; // the squares that make up this piece
+  // Made up of PIECE_COUNT squares
+  private Grid grid; // the board this piece is on
 
   /**
    * Creates an L-Shape piece. See class description for actual location of r and c

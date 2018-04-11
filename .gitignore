@@ -29,5 +29,5 @@ hs_err_pid*
 out/
 
 # intellij idea files
-.idea/workspace.xml
-.idea/tasks.xml
+\.idea/workspace.xml
+\.idea/tasks.xml

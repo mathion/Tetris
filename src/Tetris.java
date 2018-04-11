@@ -31,6 +31,15 @@ public class Tetris extends JPanel {
     setBackground(Color.YELLOW);
   }
 
+  public static void main(String[] args) {
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        new Tetris();
+      }
+    });
+  }
+
   /**
    * Updates the display
    */
@@ -49,15 +58,6 @@ public class Tetris extends JPanel {
       g.setColor(Color.BLACK);
       g.drawString("GAME OVER", 80, 300);
     }
-  }
-
-  public static void main(String[] args) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        new Tetris();
-      }
-    });
   }
 
 }

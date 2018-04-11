@@ -8,20 +8,15 @@ import java.awt.Graphics;
  */
 public class Square {
 
-  private Grid grid; // the environment where this Square is
-
-  private int row, col; // the grid location of this Square
-
-  private boolean ableToMove; // true if this Square can move
-
-  private Color color; // the color of this Square
-
-  // possible move directions are defined by the Game class
-
   // dimensions of a Square
   public static final int WIDTH = 20;
-
   public static final int HEIGHT = 20;
+  private Grid grid; // the environment where this Square is
+  private int row, col; // the grid location of this Square
+
+  // possible move directions are defined by the Game class
+  private boolean ableToMove; // true if this Square can move
+  private Color color; // the color of this Square
 
   /**
    * Creates a square
@@ -127,19 +122,19 @@ public class Square {
   }
 
   /**
+   * Gets the color of this square
+   */
+  public Color getColor() {
+    return color;
+  }
+
+  /**
    * Changes the color of this square
    *
    * @param c the new color
    */
   public void setColor(Color c) {
     color = c;
-  }
-
-  /**
-   * Gets the color of this square
-   */
-  public Color getColor() {
-    return color;
   }
 
   /**
