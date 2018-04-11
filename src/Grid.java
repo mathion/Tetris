@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * This is the Tetris board represented by a (HEIGHT - by - WIDTH) matrix of Squares.
@@ -76,13 +78,97 @@ public class Grid {
    * empty
    */
   public void checkRows() {
-    int rows_CLeared;
-    for (int i = 0; i < board.length; i++) {
-      for (int j = 0; j < board[i].length; j++) {
 
+    Queue<Integer> fullRows = findFullRows();
+    boolean rowsRemoved = false;
+    while (fullRows.peek()!=null){
+      removeRow(fullRows.remove());
+      rowsRemoved = true;
+    }
+
+    if (rowsRemoved){
+      for (int i = board.length-1; i > 0; i--) {
+        if (rowIsEmpty(i)){
+          swapRows(i, i-1);
+        }
       }
     }
+
+
   }
+
+  /**
+   * Finds all the full rows on the board.
+   * @return returns a Queue of the integer indexes of the full rows
+   */
+  private Queue<Integer> findFullRows(){
+    Queue<Integer> fullRows = new LinkedList<>();
+    for (int i = 0; i < board.length; i++) {
+      if (rowIsFull(i)){
+      fullRows.add(i);
+      }
+    }
+    return fullRows;
+  }
+
+  /**
+   * Checks if the given row is full.
+   * @param row the row to check in the grid
+   * @return returns true if the row is full
+   */
+  private boolean rowIsFull(int row){
+    for (int i = 0; i < board[row].length; i++) {
+      if (!this.isSet(row,i)){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Checks if the given row is empty.
+   * @param row the row to check in the grid
+   * @return returns true if the row is empty
+   */
+  private boolean rowIsEmpty(int row){
+    for (int i = 0; i < board[row].length; i++) {
+      if (this.isSet(row,i)){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Sets all of the squares in the given row to empty color.
+   * @param row the row of squares to remove
+   */
+  private void removeRow(int row){
+    for (Square square:
+    board[row]) {
+      square.setColor(EMPTY);
+    }
+  }
+
+  /**
+   * Swaps the colors of each square in two rows
+   * @param row1 the first row to swap
+   * @param row2 the second row to swap
+   */
+  private void swapRows(int row1, int row2){
+    Color[] rowColors = new Color[board[row1].length];
+
+    for (int i = 0; i < board[row1].length; i++) {
+      rowColors[i] = board[row1][i].getColor();
+      board[row1][i].setColor(board[row2][i].getColor());
+    }
+
+    for (int i = 0; i < board[row2].length; i++) {
+      board[row2][i].setColor(rowColors[i]);
+    }
+
+  }
+
 
   /**
    * Draws the grid on the given Graphics context
