@@ -21,7 +21,7 @@ public class Game {
   /**
    * Creates a Tetris game
    *
-   * @param Tetris the display
+   * @param display the display as a Tetris object
    */
   public Game(Tetris display) {
     grid = new Grid();
