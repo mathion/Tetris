@@ -1,7 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * This is the Tetris board represented by a (HEIGHT - by - WIDTH) matrix of Squares.

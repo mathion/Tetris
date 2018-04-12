@@ -73,6 +73,7 @@ public class Square {
     // remember to check the edges of the grid
     switch (commands) {
       case DOWN:
+      case FAST_DROP:
         if (row == (Grid.HEIGHT - 1) || grid.isSet(row + 1, col)) {
           move = false;
         }

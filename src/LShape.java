@@ -26,20 +26,20 @@ public class LShape {
   /**
    * Creates an L-Shape piece. See class description for actual location of r and c
    *
-   * @param r row location for this piece
-   * @param c column location for this piece
-   * @param g the grid for this game piece
+   * @param row row location for this piece
+   * @param col column location for this piece
+   * @param grid the grid for this game piece
    */
-  public LShape(int r, int c, Grid g) {
-    grid = g;
+  public LShape(int row, int col, Grid grid) {
+    this.grid = grid;
     square = new Square[PIECE_COUNT];
     ableToMove = true;
 
     // Create the squares
-    square[0] = new Square(g, r - 1, c, Color.magenta, true);
-    square[1] = new Square(g, r, c, Color.magenta, true);
-    square[2] = new Square(g, r + 1, c, Color.magenta, true);
-    square[3] = new Square(g, r + 1, c + 1, Color.magenta, true);
+    square[0] = new Square(grid, row - 1, col, Color.magenta, true);
+    square[1] = new Square(grid, row, col, Color.magenta, true);
+    square[2] = new Square(grid, row + 1, col, Color.magenta, true);
+    square[3] = new Square(grid, row + 1, col + 1, Color.magenta, true);
   }
 
   /**
@@ -58,12 +58,19 @@ public class LShape {
    */
   public void move(Commands command) {
     if (canMove(command)) {
-      for (int i = 0; i < PIECE_COUNT; i++) {
-        square[i].move(command);
+      if (command == Commands.FAST_DROP) {
+        while (canMove(command)) {
+          for (int i = 0; i < PIECE_COUNT; i++) {
+            square[i].move(Commands.DOWN);
+          }
+        }
+      } else {
+        for (int i = 0; i < PIECE_COUNT; i++) {
+          square[i].move(command);
+        }
       }
-    }
-    // if we couldn't move, see if because we're at the bottom
-    else if (command == Commands.DOWN) {
+      // if we couldn't move, see if because we're at the bottom
+    } else if (command == Commands.DOWN) {
       ableToMove = false;
     }
   }
@@ -79,6 +86,10 @@ public class LShape {
       points[i] = new Point(square[i].getRow(), square[i].getCol());
     }
     return points;
+  }
+
+  public Square[] getSquare() {
+    return square;
   }
 
   /**
@@ -98,11 +109,11 @@ public class LShape {
     }
 
     // Each square must be able to move in that direction
-    boolean answer = true;
     for (int i = 0; i < PIECE_COUNT; i++) {
-      answer = answer && square[i].canMove(command);
+      if (!square[i].canMove(command)) {
+        return false;
+      }
     }
-
-    return answer;
+    return true;
   }
 }

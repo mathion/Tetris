@@ -52,7 +52,6 @@ public class EventController extends KeyAdapter implements ActionListener {
         case KeyEvent.VK_DOWN:
           handleCommand(Commands.DOWN);
           break;
-        // HANDLE other keystrokes here
         case KeyEvent.VK_LEFT:
           handleCommand(Commands.LEFT);
           break;

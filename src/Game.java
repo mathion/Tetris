@@ -45,17 +45,11 @@ public class Game {
   /**
    * Moves the piece in the given direction
    *
-   * @param the direction to move
+   * @param command the direction to move
    */
   public void movePiece(Commands command) {
     if (currentPiece != null) {
-      if (command == Commands.FAST_DROP) {
-        while (currentPiece.canMove(Commands.DOWN)) {
-          currentPiece.move(Commands.DOWN);
-        }
-      } else {
-        currentPiece.move(command);
-      }
+      currentPiece.move(command);
     }
     updatePiece();
     display.update();
