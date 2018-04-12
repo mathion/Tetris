@@ -1,4 +1,5 @@
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 import java.awt.Color;
@@ -81,16 +82,16 @@ public class TetrisTests {
     assertTrue(piece.canMove(Commands.FAST_DROP));
 
     piece = new LShape(18, 0, grid);
-    assertTrue(!piece.canMove(Commands.LEFT));
-    assertTrue(!piece.canMove(Commands.DOWN));
-    assertTrue(!piece.canMove(Commands.FAST_DROP));
+    assertFalse(piece.canMove(Commands.LEFT));
+    assertFalse(piece.canMove(Commands.DOWN));
+    assertFalse(piece.canMove(Commands.FAST_DROP));
     assertTrue(piece.canMove(Commands.RIGHT));
 
     piece = new LShape(18, 8, grid);
     assertTrue(piece.canMove(Commands.LEFT));
-    assertTrue(!piece.canMove(Commands.DOWN));
-    assertTrue(!piece.canMove(Commands.FAST_DROP));
-    assertTrue(!piece.canMove(Commands.RIGHT));
+    assertFalse(piece.canMove(Commands.DOWN));
+    assertFalse(piece.canMove(Commands.FAST_DROP));
+    assertFalse(piece.canMove(Commands.RIGHT));
   }
 
   @Test
@@ -103,35 +104,58 @@ public class TetrisTests {
     assertTrue(piece.canMove(Commands.FAST_DROP));
 
     piece = new Square(grid, 19, 0, Color.cyan, true);
-    assertTrue(!piece.canMove(Commands.LEFT));
-    assertTrue(!piece.canMove(Commands.DOWN));
-    assertTrue(!piece.canMove(Commands.FAST_DROP));
+    assertFalse(piece.canMove(Commands.LEFT));
+    assertFalse(piece.canMove(Commands.DOWN));
+    assertFalse(piece.canMove(Commands.FAST_DROP));
     assertTrue(piece.canMove(Commands.RIGHT));
 
     piece = new Square(grid, 19, 9, Color.cyan, true);
     assertTrue(piece.canMove(Commands.LEFT));
-    assertTrue(!piece.canMove(Commands.DOWN));
-    assertTrue(!piece.canMove(Commands.FAST_DROP));
-    assertTrue(!piece.canMove(Commands.RIGHT));
+    assertFalse(!piece.canMove(Commands.DOWN));
+    assertFalse(!piece.canMove(Commands.FAST_DROP));
+    assertFalse(!piece.canMove(Commands.RIGHT));
   }
 
   @Test
   public void testSquareMove() {
     Grid grid = new Grid();
-    Square square = new Square(grid, 10,5, Color.cyan, true);
+    Square square = new Square(grid, 10, 5, Color.cyan, true);
 
     square.move(Commands.LEFT);
-    assertEquals(4,square.getCol());
-    assertEquals(10,square.getRow());
+    assertEquals(4, square.getCol());
+    assertEquals(10, square.getRow());
 
     square.move(Commands.DOWN);
-    assertEquals(4,square.getCol());
-    assertEquals(11,square.getRow());
+    assertEquals(4, square.getCol());
+    assertEquals(11, square.getRow());
 
     square.move(Commands.RIGHT);
-    assertEquals(5,square.getCol());
-    assertEquals(11,square.getRow());
+    assertEquals(5, square.getCol());
+    assertEquals(11, square.getRow());
   }
 
+  @Test
+  public void testCheckRows() {
+    Grid grid = new Grid();
+    for (int row = 0; row < Grid.HEIGHT; row++) {
+      for (int col = 0; col < Grid.WIDTH; col++) {
+        if (row != 10 || (col == 4 || col == 5)) {
+          grid.set(row, col, Color.cyan);
+        }
+      }
+    }
 
+    grid.checkRows();
+
+    for (int row = 0; row < Grid.HEIGHT; row++) {
+      for (int col = 0; col < Grid.WIDTH; col++) {
+        if (row == Grid.HEIGHT - 1 && (col == 4 || col == 5)) {
+          assertTrue(grid.isSet(row, col));
+        } else {
+          assertFalse(grid.isSet(row, col));
+        }
+      }
+    }
+
+  }
 }
