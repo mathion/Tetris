@@ -21,14 +21,14 @@ public class Square {
   /**
    * Creates a square
    *
-   * @param g the Grid for this Square
+   * @param grid the Grid for this Square
    * @param row the row of this Square in the Grid
    * @param col the column of this Square in the Grid
    * @param c the Color of this Square
    * @param mobile true if this Square can move
    * @throws IllegalArgumentException if row and col not within the Grid
    */
-  public Square(Grid g, int row, int col, Color c, boolean mobile) {
+  public Square(Grid grid, int row, int col, Color c, boolean mobile) {
     if (row < 0 || row > Grid.HEIGHT - 1) {
       throw new IllegalArgumentException("Invalid row =" + row);
     }
@@ -37,7 +37,7 @@ public class Square {
     }
 
     // initialize instance variables
-    grid = g;
+    this.grid = grid;
     this.row = row;
     this.col = col;
     color = c;

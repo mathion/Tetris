@@ -118,6 +118,20 @@ public class TetrisTests {
   @Test
   public void testSquareMove() {
     Grid grid = new Grid();
-    
+    Square square = new Square(grid, 10,5, Color.cyan, true);
+
+    square.move(Commands.LEFT);
+    assertEquals(4,square.getCol());
+    assertEquals(10,square.getRow());
+
+    square.move(Commands.DOWN);
+    assertEquals(4,square.getCol());
+    assertEquals(11,square.getRow());
+
+    square.move(Commands.RIGHT);
+    assertEquals(5,square.getCol());
+    assertEquals(11,square.getRow());
   }
+
+
 }
