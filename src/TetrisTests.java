@@ -111,9 +111,9 @@ public class TetrisTests {
 
     piece = new Square(grid, 19, 9, Color.cyan, true);
     assertTrue(piece.canMove(Commands.LEFT));
-    assertFalse(!piece.canMove(Commands.DOWN));
-    assertFalse(!piece.canMove(Commands.FAST_DROP));
-    assertFalse(!piece.canMove(Commands.RIGHT));
+    assertFalse(piece.canMove(Commands.DOWN));
+    assertFalse(piece.canMove(Commands.FAST_DROP));
+    assertFalse(piece.canMove(Commands.RIGHT));
   }
 
   @Test
