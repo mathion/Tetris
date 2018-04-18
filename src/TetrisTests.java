@@ -72,6 +72,10 @@ public class TetrisTests {
     }
   }
 
+  /**
+   * Tests the canMove method of the LShape class Creates a grid and places a LShape in multiple
+   * places and checks if the canMove method returns the expected value.
+   */
   @Test
   public void testCanMove() {
     Grid grid = new Grid();
@@ -94,9 +98,15 @@ public class TetrisTests {
     assertFalse(piece.canMove(Commands.RIGHT));
   }
 
+
+  /**
+   * Tests the canMove method of the Square class Creates a grid and places a square in multiple
+   * places and checks if the canMove method returns the expected value.
+   */
   @Test
   public void testSquareCanMove() {
     Grid grid = new Grid();
+
     Square piece = new Square(grid, 10, 5, Color.cyan, true);
     assertTrue(piece.canMove(Commands.DOWN));
     assertTrue(piece.canMove(Commands.LEFT));
@@ -116,6 +126,10 @@ public class TetrisTests {
     assertFalse(piece.canMove(Commands.RIGHT));
   }
 
+  /**
+   * Tests the move method from the Square class. Creates a grid and a square.  Then moves the
+   * square around the board and checks the position of the square.
+   */
   @Test
   public void testSquareMove() {
     Grid grid = new Grid();
@@ -124,16 +138,24 @@ public class TetrisTests {
     square.move(Commands.LEFT);
     assertEquals(4, square.getCol());
     assertEquals(10, square.getRow());
+//    assertTrue(grid.isSet(10,4));
 
     square.move(Commands.DOWN);
     assertEquals(4, square.getCol());
     assertEquals(11, square.getRow());
+//    assertTrue(grid.isSet(11,4));
 
     square.move(Commands.RIGHT);
     assertEquals(5, square.getCol());
     assertEquals(11, square.getRow());
+//    assertTrue(grid.isSet(11,5));
   }
 
+  /**
+   * Tests the checkRows method from the Grid class. Creates a grid full of squares except for two
+   * squares in the middle. Runs checkRows then checks every square on the grid for the correct
+   * color.
+   */
   @Test
   public void testCheckRows() {
     Grid grid = new Grid();
