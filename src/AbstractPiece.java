@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 
-public abstract class AbstractPiece {
+public abstract class AbstractPiece implements Piece {
 
   // number of squares in one Tetris game piece
   protected static final int PIECE_COUNT = 4;
@@ -22,6 +22,7 @@ public abstract class AbstractPiece {
     }
   }
 
+  @Override
   /**
    * Moves the piece if possible Freeze the piece if it cannot move down anymore
    *
@@ -35,7 +36,9 @@ public abstract class AbstractPiece {
             square[i].move(Commands.DOWN);
           }
         }
-      } else {
+      } else if (command == Commands.ROTATE){
+        this.rotatePiece();
+      } else{
         for (int i = 0; i < PIECE_COUNT; i++) {
           square[i].move(command);
         }
@@ -67,6 +70,7 @@ public abstract class AbstractPiece {
     return square[0].getColor();
   }
 
+  @Override
   /**
    * Returns if this piece can move in the given direction
    */
@@ -75,6 +79,9 @@ public abstract class AbstractPiece {
       return false;
     }
 
+    if (direction == Commands.ROTATE){
+      return this.canRotate();
+    }
     // Each square must be able to move in that direction
     Boolean canMove = true;
     for (int i = 0; i < PIECE_COUNT; i++) {
@@ -83,55 +90,21 @@ public abstract class AbstractPiece {
     return canMove;
   }
 
-  /**
-   * Rotate the piece clock-wise direction, need fixing for block since it rotates the block.
-   * 
-   * Also need a canCollide method to check whether it hits the wall or not. it'll return error when the piece rotate toward the wall
-   */
-  public void rotatePiece() {
-	  for (int i = 0;i < PIECE_COUNT ; i++){
-		  int tempRow = square[i].getCol() - square[1].getCol();
-		  int tempCol = - (square[i].getRow() - square[1].getRow());
-		  
-		  tempRow = tempRow + square[1].getRow();
-		  tempCol = tempCol + square[1].getCol();
-		  
-		  square[i].setRow(tempRow);
-		  square[i].setCol(tempCol);
-	  }
+  public boolean canRotate(){
+    return true;
   }
-	/*
-	 * public void rotatePiece(int row, int col, Grid grid){
-	 * 
-	 * Square [2][2] initialPositions; 
-	 * Square[][] rotatedRightPositions;
-	 
-	 
-	 int middleRow =  square[1].getRow();
-	 int middleCol = square[1].getCol();
-	 
-	 initialPositions[1][1] = 
-	 
-	 
-	 for (int i = 0; i < PIECE_COUNT; i++) {
-	 		int currentRow;
-	 		int currentCol;
-	 		
-	 		currentRow = square[i].getRow();
-	 		currentCol = square[i].getCol();
-	 		
-	 		
-	 		
-	 		
-			points[i] = new Point(square[i].getRow(), square[i].getCol());
-		}
-	
-	rightTiltTopRow(initialPositions,rotatedRightPositions);
-	rightTiltMidRow	(initialPositions,rotatedRightPositions);
-	rightTiltBotRow(initialPositions,rotatedRightPositions);
-	
-	 * }
-	 */
+
+  /**
+   *
+   */
+  @Override
+  public void rotatePiece() {
+    for (int i = 0; i < PIECE_COUNT; i++) {
+      int temp = square[i].getRow();
+      square[i].setRow(square[1].getRow()+square[i].getCol()-square[1].getCol());
+      square[i].setCol(square[1].getCol()-temp+square[1].getRow());
+      }
+  }
 
   public void rightTiltTopRow(Square[][] iniPositions, Square[][] newPositions) {
 

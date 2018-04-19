@@ -9,4 +9,8 @@ public class BlockPiece extends AbstractPiece {
     this.square[2] = new Square(this.grid, row, col, Color.gray, true);
     this.square[3] = new Square(this.grid, row, col + 1, Color.gray, true);
   }
+
+  @Override
+  public void rotatePiece() {
+  }
 }

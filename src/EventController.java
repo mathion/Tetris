@@ -62,8 +62,8 @@ public class EventController extends KeyAdapter implements ActionListener {
           handleCommand(Commands.FAST_DROP);
           break;
         case KeyEvent.VK_UP:
-        	handleCommand(Commands.ROTATE);
-        	break;
+          handleCommand(Commands.ROTATE);
+          break;
       }
     }
   }
@@ -83,8 +83,6 @@ public class EventController extends KeyAdapter implements ActionListener {
     gameOver = game.isGameOver();
     if (gameOver) {
       timer.stop();
-      
-  
     }
   }
 }
