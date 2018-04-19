@@ -53,6 +53,8 @@ public class Game {
     if (currentPiece != null) {
       currentPiece.move(command);
     }
+    
+    //add rotate command
     if (command == Commands.ROTATE) {
     	currentPiece.rotatePiece();
     }

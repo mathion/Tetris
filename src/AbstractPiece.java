@@ -83,12 +83,19 @@ public abstract class AbstractPiece {
     return canMove;
   }
 
+  /**
+   * Rotate the piece clock-wise direction, need fixing for block since it rotates the block.
+   * 
+   * Also need a canCollide method to check whether it hits the wall or not. it'll return error when the piece rotate toward the wall
+   */
   public void rotatePiece() {
 	  for (int i = 0;i < PIECE_COUNT ; i++){
 		  int tempRow = square[i].getCol() - square[1].getCol();
 		  int tempCol = - (square[i].getRow() - square[1].getRow());
+		  
 		  tempRow = tempRow + square[1].getRow();
 		  tempCol = tempCol + square[1].getCol();
+		  
 		  square[i].setRow(tempRow);
 		  square[i].setCol(tempCol);
 	  }
