@@ -31,3 +31,4 @@ out/
 # intellij idea files
 \.idea/workspace.xml
 \.idea/tasks.xml
+/bin1/

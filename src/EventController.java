@@ -61,6 +61,9 @@ public class EventController extends KeyAdapter implements ActionListener {
         case KeyEvent.VK_SPACE:
           handleCommand(Commands.FAST_DROP);
           break;
+        case KeyEvent.VK_UP:
+        	handleCommand(Commands.ROTATE);
+        	break;
       }
     }
   }
@@ -75,11 +78,13 @@ public class EventController extends KeyAdapter implements ActionListener {
   /**
    * Update the game by moving in the given direction
    */
-  private void handleCommand(Commands Commmand) {
-    game.movePiece(Commmand);
+  private void handleCommand(Commands Command) {
+    game.movePiece(Command);
     gameOver = game.isGameOver();
     if (gameOver) {
       timer.stop();
+      
+  
     }
   }
 }

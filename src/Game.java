@@ -51,6 +51,9 @@ public class Game {
     if (currentPiece != null) {
       currentPiece.move(command);
     }
+    if (command == Commands.ROTATE) {
+    	currentPiece.rotatePiece();
+    }
     updatePiece();
     display.update();
     grid.checkRows();

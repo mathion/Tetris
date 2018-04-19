@@ -9,5 +9,5 @@
  * @author CSC 143
  */
 public enum Commands {
-  LEFT, RIGHT, DOWN, FAST_DROP
+  LEFT, RIGHT, DOWN, FAST_DROP, ROTATE
 }
