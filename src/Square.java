@@ -51,19 +51,19 @@ public class Square {
     return row;
   }
 
+  public void setRow(int row) {
+    this.row = row;
+  }
+
   /**
    * Returns the column for this Square
    */
   public int getCol() {
     return col;
   }
-  
-  public void setRow(int row) {
-	  this.row = row;
-  }
-  
+
   public void setCol(int col) {
-	  this.col = col;
+    this.col = col;
   }
 
   /**
@@ -71,29 +71,23 @@ public class Square {
    *
    * @param commands the direction to test for possible move
    */
-  public boolean canRotate(int originSqrRow,int originSqrCol,int curSqrCol,int curSqrRow ){
-	  if (!ableToMove) {
-	      return false;
-	    }
+  public boolean canRotate(Square originSquare) {
+    if (!ableToMove) {
+      return false;
+    }
 
-	  int moveToRow = originSqrRow + curSqrCol - originSqrCol;
-	  int moveToCol = originSqrCol - curSqrRow + originSqrRow;
-	  boolean canRotate = true;
+    int originSqrRow = originSquare.getRow();
+    int originSqrCol = originSquare.getCol();
+    int moveToRow = originSqrRow + col - originSqrCol;
+    int moveToCol = originSqrCol - row + originSqrRow;
 
-	  if(moveToCol == Grid.WIDTH) {
-		  return false;
-	  }
-	  if(grid.isSet(moveToRow, moveToCol)/*|| moveToRow > Grid.HEIGHT || moveToCol > Grid.WIDTH*/) {
-		  return false;
+    if (moveToCol >= Grid.WIDTH || moveToRow >= Grid.HEIGHT || moveToCol < 0 || moveToRow < 0) {
+      return false;
+    }
 
-	  }
-	      //int temp = square[i].getRow();
-	      //square[i].setRow(square[1].getRow()+square[i].getCol()-square[1].getCol());
-	      //square[i].setCol(square[1].getCol()-temp+square[1].getRow());
-
-
-	  return canRotate;
+    return !grid.isSet(moveToRow, moveToCol);
   }
+
   public boolean canMove(Commands commands) {
     if (!ableToMove) {
       return false;

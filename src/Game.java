@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Random;
+
 /**
  * Manages the game Tetris. Keeps track of the current piece and the grid. Updates the display
  * whenever the state of the game has changed.
@@ -14,7 +15,7 @@ public class Game {
 
   private Tetris display; // the visual for the Tetris game
 
-  private AbstractPiece currentPiece; // the current piece that is dropping
+  private Piece currentPiece; // the current piece that is dropping
 
   private boolean isOver; // has the game finished?
 
@@ -53,9 +54,6 @@ public class Game {
     if (currentPiece != null) {
       currentPiece.move(command);
     }
-    
-    //add rotate command
-
     updatePiece();
     display.update();
     grid.checkRows();
@@ -92,9 +90,9 @@ public class Game {
    */
   private void updatePiece() {
     if (currentPiece == null) {
-    	Random rand = new Random();
-    	int n = rand.nextInt(7);
-    	getRandomPiece(n);
+      Random rand = new Random();
+      int n = rand.nextInt(7);
+      getRandomPiece(n);
     }
 
     // set Grid positions corresponding to frozen piece
@@ -109,30 +107,30 @@ public class Game {
     }
 
   }
-  
+
   private void getRandomPiece(int n) {
-	  switch (n) {
-	  	case 0:
-	  		currentPiece = new LShape(1, Grid.WIDTH / 2 - 1, grid);
-	  		break;
-	  	case 1:
-	  		currentPiece = new JShape(1, Grid.WIDTH / 2 - 1, grid);
-	  		break;
-	  	case 2:
-	  		currentPiece = new SShape(1, Grid.WIDTH / 2 - 1, grid);
-	  		break;
-	  	case 3:
-	  		currentPiece = new TShape(1, Grid.WIDTH / 2 - 1, grid);
-	  		break;
-	  	case 4:
-	  		currentPiece = new ZShape(1, Grid.WIDTH / 2 - 1, grid);
-	  		break;
-	  	case 5:
-	  		currentPiece = new BarShape(1, Grid.WIDTH / 2 - 1, grid);
-	  		break;
-	  	case 6: 
-	  		currentPiece = new BlockPiece(1, Grid.WIDTH / 2 - 1, grid);
-	  		break;
-	  }
+    switch (n) {
+      case 0:
+        currentPiece = new LShape(1, Grid.WIDTH / 2 - 1, grid);
+        break;
+      case 1:
+        currentPiece = new JShape(1, Grid.WIDTH / 2 - 1, grid);
+        break;
+      case 2:
+        currentPiece = new SShape(1, Grid.WIDTH / 2 - 1, grid);
+        break;
+      case 3:
+        currentPiece = new TShape(1, Grid.WIDTH / 2 - 1, grid);
+        break;
+      case 4:
+        currentPiece = new ZShape(1, Grid.WIDTH / 2 - 1, grid);
+        break;
+      case 5:
+        currentPiece = new BarShape(1, Grid.WIDTH / 2 - 1, grid);
+        break;
+      case 6:
+        currentPiece = new BlockPiece(1, Grid.WIDTH / 2 - 1, grid);
+        break;
+    }
   }
 }

@@ -36,9 +36,9 @@ public abstract class AbstractPiece implements Piece {
             square[i].move(Commands.DOWN);
           }
         }
-      } else if (command == Commands.ROTATE){
+      } else if (command == Commands.ROTATE) {
         this.rotatePiece();
-      } else{
+      } else {
         for (int i = 0; i < PIECE_COUNT; i++) {
           square[i].move(command);
         }
@@ -79,7 +79,7 @@ public abstract class AbstractPiece implements Piece {
       return false;
     }
 
-    if (direction == Commands.ROTATE){
+    if (direction == Commands.ROTATE) {
       return this.canRotate();
     }
     // Each square must be able to move in that direction
@@ -90,31 +90,31 @@ public abstract class AbstractPiece implements Piece {
     return canMove;
   }
 
-  public boolean canRotate(){
-	  if (!ableToMove) {
-	      return false;
-	    }
-	  Boolean canRotate = true;
-	  //toddy code
+  public boolean canRotate() {
+    if (!ableToMove) {
+      return false;
+    }
+    Boolean canRotate = true;
+    //toddy code
     for (int i = 0; i < PIECE_COUNT; i++) {
-      canRotate = canRotate && square[i].canRotate(square[1].getRow(),square[1].getCol(), square[i].getCol(),square[i].getRow());
+      canRotate = canRotate && square[i].canRotate(square[1]);
     }
 
-	  //toddy code
+    //toddy code
     return canRotate;
   }
 
   /**
-   *
+   * Rotates the given piece
    */
   @Override
   public void rotatePiece() {
-    for (int i = 0; i < PIECE_COUNT; i++) {
-      int temp = square[i].getRow();
-      square[i].setRow(square[1].getRow()+square[i].getCol()-square[1].getCol());
-      square[i].setCol(square[1].getCol()-temp+square[1].getRow());
+    if (this.canRotate()) {
+      for (int i = 0; i < PIECE_COUNT; i++) {
+        int temp = square[i].getRow();
+        square[i].setRow(square[1].getRow() + square[i].getCol() - square[1].getCol());
+        square[i].setCol(square[1].getCol() - temp + square[1].getRow());
       }
+    }
   }
-
-
 }
