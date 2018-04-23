@@ -55,9 +55,7 @@ public class Game {
     }
     
     //add rotate command
-    if (command == Commands.ROTATE) {
-    	currentPiece.rotatePiece();
-    }
+
     updatePiece();
     display.update();
     grid.checkRows();

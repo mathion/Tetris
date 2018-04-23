@@ -91,7 +91,17 @@ public abstract class AbstractPiece implements Piece {
   }
 
   public boolean canRotate(){
-    return true;
+	  if (!ableToMove) {
+	      return false;
+	    }
+	  Boolean canRotate = true;
+	  //toddy code
+    for (int i = 0; i < PIECE_COUNT; i++) {
+      canRotate = canRotate && square[i].canRotate(square[1].getRow(),square[1].getCol(), square[i].getCol(),square[i].getRow());
+    }
+
+	  //toddy code
+    return canRotate;
   }
 
   /**
@@ -106,28 +116,5 @@ public abstract class AbstractPiece implements Piece {
       }
   }
 
-  public void rightTiltTopRow(Square[][] iniPositions, Square[][] newPositions) {
-
-    newPositions[0][2] = iniPositions[0][0];
-    newPositions[1][2] = iniPositions[0][1];
-    newPositions[2][2] = iniPositions[0][2];
-
-  }
-
-  public void rightTiltMidRow(Square[][] iniPositions, Square[][] newPositions) {
-
-    newPositions[0][1] = iniPositions[1][0];
-    newPositions[1][1] = iniPositions[1][1];
-    newPositions[2][1] = iniPositions[1][2];
-
-  }
-
-  public void rightTiltBotRow(Square[][] iniPositions, Square[][] newPositions) {
-
-    newPositions[0][0] = iniPositions[2][0];
-    newPositions[1][0] = iniPositions[2][1];
-    newPositions[2][0] = iniPositions[2][2];
-
-  }
 
 }

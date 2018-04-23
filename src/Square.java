@@ -71,6 +71,29 @@ public class Square {
    *
    * @param commands the direction to test for possible move
    */
+  public boolean canRotate(int originSqrRow,int originSqrCol,int curSqrCol,int curSqrRow ){
+	  if (!ableToMove) {
+	      return false;
+	    }
+
+	  int moveToRow = originSqrRow + curSqrCol - originSqrCol;
+	  int moveToCol = originSqrCol - curSqrRow + originSqrRow;
+	  boolean canRotate = true;
+
+	  if(moveToCol == Grid.WIDTH) {
+		  return false;
+	  }
+	  if(grid.isSet(moveToRow, moveToCol)/*|| moveToRow > Grid.HEIGHT || moveToCol > Grid.WIDTH*/) {
+		  return false;
+
+	  }
+	      //int temp = square[i].getRow();
+	      //square[i].setRow(square[1].getRow()+square[i].getCol()-square[1].getCol());
+	      //square[i].setCol(square[1].getCol()-temp+square[1].getRow());
+
+
+	  return canRotate;
+  }
   public boolean canMove(Commands commands) {
     if (!ableToMove) {
       return false;
