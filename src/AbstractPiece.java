@@ -111,9 +111,7 @@ public abstract class AbstractPiece implements Piece {
   public void rotatePiece() {
     if (this.canRotate()) {
       for (int i = 0; i < PIECE_COUNT; i++) {
-        int temp = square[i].getRow();
-        square[i].setRow(square[1].getRow() + square[i].getCol() - square[1].getCol());
-        square[i].setCol(square[1].getCol() - temp + square[1].getRow());
+        square[i].rotate(square[1]);
       }
     }
   }

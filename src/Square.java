@@ -69,7 +69,7 @@ public class Square {
   /**
    * Returns true if this Square can move 1 spot in direction d
    *
-   * @param commands the direction to test for possible move
+   * @param originSquare the square about which to rotate
    */
   public boolean canRotate(Square originSquare) {
     if (!ableToMove) {
@@ -145,6 +145,16 @@ public class Square {
         // MODIFY so that the Square moves appropriately
       }
     }
+  }
+
+  /**
+   * Rotates the square about a square
+   * @param originSquare the square about which to rotate.
+   */
+  public void rotate(Square originSquare){
+    int temp = row;
+    row = originSquare.row + col - originSquare.col;
+    col = originSquare.col - temp + originSquare.row;
   }
 
   /**
