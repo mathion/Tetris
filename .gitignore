@@ -36,3 +36,4 @@ out/
 # Eclipse Files
 .classpath
 .project
+/bin/
