@@ -5,10 +5,10 @@ import java.awt.Point;
 public abstract class AbstractPiece implements Piece {
 
   // number of squares in one Tetris game piece
-  protected static final int PIECE_COUNT = 4;
-  protected boolean ableToMove; // can this piece move
-  protected Square[] square; // the squares that make up this piece
-  protected Grid grid; // the board this piece is on
+  private static final int PIECE_COUNT = 4;
+  private boolean ableToMove; // can this piece move
+  protected final Square[] square; // the squares that make up this piece
+  protected final Grid grid; // the board this piece is on
 
   public AbstractPiece(int row, int col, Grid grid) {
     this.grid = grid;
@@ -90,7 +90,7 @@ public abstract class AbstractPiece implements Piece {
     return canMove;
   }
 
-  public boolean canRotate() {
+  private boolean canRotate() {
     if (!ableToMove) {
       return false;
     }
@@ -107,7 +107,6 @@ public abstract class AbstractPiece implements Piece {
   /**
    * Rotates the given piece
    */
-  @Override
   public void rotatePiece() {
     if (this.canRotate()) {
       for (int i = 0; i < PIECE_COUNT; i++) {

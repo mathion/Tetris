@@ -180,4 +180,13 @@ public class TetrisTests {
     }
 
   }
+
+  /**
+   * Tests the canRotate method in the abstractPiece class
+   */
+  @Test
+  public void testCanRotate(){
+    Grid grid = new Grid();
+
+  }
 }

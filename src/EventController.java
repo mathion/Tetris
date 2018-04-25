@@ -14,8 +14,8 @@ import javax.swing.Timer;
 public class EventController extends KeyAdapter implements ActionListener {
 
   private static final double PIECE_MOVE_TIME = 0.8; // wait 0.8 s every time
-  private Game game; // current game: grid and current piece
-  private Timer timer;
+  private final Game game; // current game: grid and current piece
+  private final Timer timer;
   // the piece moves down
   // increase to slow it
   // down
