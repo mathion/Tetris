@@ -23,7 +23,7 @@ public class Grid {
   public static final int TOP = 50; // pixel position of top of grid
   public static final Color EMPTY = Color.WHITE;
   private static final int BORDER = 5;
-  private final Square[][] board;
+  private Square[][] board;
 
   /**
    * Creates the grid

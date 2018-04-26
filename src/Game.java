@@ -11,9 +11,9 @@ import java.util.Random;
  */
 public class Game {
 
-  private final Grid grid; // the grid that makes up the Tetris board
+  private Grid grid; // the grid that makes up the Tetris board
 
-  private final Tetris display; // the visual for the Tetris game
+  private Tetris display; // the visual for the Tetris game
 
   private Piece currentPiece; // the current piece that is dropping
 
