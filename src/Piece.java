@@ -2,9 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 
-public interface Piece {
-
-  void rotatePiece();
+interface Piece {
 
   boolean canMove(Commands command);
 

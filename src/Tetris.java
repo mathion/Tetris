@@ -14,12 +14,12 @@ import javax.swing.SwingUtilities;
 
 public class Tetris extends JPanel {
 
-  private Game game;
+  private final Game game;
 
   /**
    * Sets up the parts for the Tetris game, display and user control
    */
-  public Tetris() {
+  private Tetris() {
     game = new Game(this);
     JFrame f = new JFrame("The Tetris Game");
     f.add(this);

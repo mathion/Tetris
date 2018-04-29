@@ -81,19 +81,18 @@ public class Square {
 
     for (int i = Math.min(this.col, moveToCol); i <= Math.max(this.col, moveToCol); i++) {
       for (int j = Math.min(this.row, moveToRow); j <= Math.max(this.row, moveToRow); j++) {
-        if (grid.isSet(j,i)){
+        if (grid.isSet(j, i)) {
           return false;
         }
       }
     }
     return true;
-    }
+  }
 
   public boolean canMove(Commands commands) {
     if (!ableToMove) {
       return false;
     }
-
     boolean move = true;
     // if the given direction is blocked, we can't move
     // remember to check the edges of the grid
@@ -132,6 +131,7 @@ public class Square {
    */
   public void move(Commands command) {
     if (canMove(command)) {
+//    if (true) {
       switch (command) {
         case DOWN:
           row = row + 1;
@@ -143,14 +143,16 @@ public class Square {
           col += 1;
           break;
       }
+
     }
   }
 
   /**
    * Rotates the square about a square
+   *
    * @param originSquare the square about which to rotate.
    */
-  public void rotate(Square originSquare){
+  public void rotate(Square originSquare) {
     int temp = row;
     row = originSquare.row + col - originSquare.col;
     col = originSquare.col - temp + originSquare.row;
