@@ -51,9 +51,6 @@ public class Square {
     return row;
   }
 
-  public void setRow(int row) {
-    this.row = row;
-  }
 
   /**
    * Returns the column for this Square
@@ -62,9 +59,6 @@ public class Square {
     return col;
   }
 
-  public void setCol(int col) {
-    this.col = col;
-  }
 
   /**
    * Returns true if this Square can move 1 spot in direction d
@@ -85,8 +79,15 @@ public class Square {
       return false;
     }
 
-    return !grid.isSet(moveToRow, moveToCol);
-  }
+    for (int i = Math.min(this.col, moveToCol); i <= Math.max(this.col, moveToCol); i++) {
+      for (int j = Math.min(this.row, moveToRow); j <= Math.max(this.row, moveToRow); j++) {
+        if (grid.isSet(j,i)){
+          return false;
+        }
+      }
+    }
+    return true;
+    }
 
   public boolean canMove(Commands commands) {
     if (!ableToMove) {
@@ -141,8 +142,6 @@ public class Square {
         case RIGHT:
           col += 1;
           break;
-        // currently doesn't support moving LEFT or RIGHT
-        // MODIFY so that the Square moves appropriately
       }
     }
   }

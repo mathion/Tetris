@@ -180,38 +180,84 @@ public class TetrisTests {
     }
 
   }
-  
-  /*
-  +	 * 
+
+  /**
+   * Tests the canRotate method in the square class
+   */
+    @Test
+    public void testRotate() {
+      Grid grid = new Grid();
+
+      int row = 5, col = 5;
+      Piece[] pieces = { new BarShape(row, col, grid), new LShape(row, col, grid), new ZShape(row, col, grid),
+          new TShape(row, col, grid), new JShape(row, col, grid), new SShape(row, col, grid) };
+
+      for (Piece testPiece : pieces) {
+        System.out.println(testPiece.getClass());
+
+        // The piece should be able to rotate
+        assertTrue(testPiece.canRotate());
+
+        // Place a square next to the piece to prevent it from rotating
+        int setRow, setCol;
+        if (testPiece.getClass() == BarShape.class) {
+          setRow = row + 1;
+          setCol = col;
+        } else if (testPiece.getClass() == LShape.class) {
+          setRow = row;
+          setCol = col - 1;
+        } else if (testPiece.getClass() == ZShape.class) {
+          setRow = row + 1;
+          setCol = col - 1;
+        } else if (testPiece.getClass() == TShape.class) {
+          setRow = row + 1;
+          setCol = col - 1;
+        } else if (testPiece.getClass() == JShape.class) {
+          setRow = row;
+          setCol = col - 1;
+        } else { // SShape
+          setRow = row;
+          setCol = col - 1;
+        }
+        grid.set(setRow, setCol, Color.GREEN);
+        assertFalse(testPiece.canRotate());
+
+        // clear the square for the next piece
+        grid.set(setRow, setCol, Grid.EMPTY);
+      }
+    }
+
+  /**
+  +	 *
   +	 * Checking that piece wont rotate into Grid Bounds
   +	 */
   	@Test
   	public void testCantRotateIn2Wall() {
   		Grid grid = new Grid();
-  
+
   		// checking right wall
   		JShape piece = new JShape(10, 9, grid);
   		assertFalse(piece.canRotate());
-  
+
   		// checking left wall
   		LShape piece1 = new LShape(10, 0, grid);
   		assertFalse(piece1.canRotate());
-  
+
   		// checking bottom
   		BarShape piece2 = new BarShape(18, 5, grid);
   		assertFalse(piece2.canRotate());
-  
+
   	}
-  
-  	/*
-  +	 * 
+
+  	/**
+  +	 *
   +	 * Checking that piece rotated into correct position
   +	 */
   	@Test
   	public void rotatedCorrectly() {
   		Grid grid = new Grid();
   		LShape piece = new LShape(10, 5, grid);
-  
+
   		// ensure piece is set
   		for (int i = 0; i < piece.getLocations().length; i++) {
   			Point p = piece.getLocations()[i];
@@ -221,9 +267,9 @@ public class TetrisTests {
   				assertEquals(9 + i, p.x);
   			}
   		}
-  
+
   		piece.rotatePiece();
-  
+
   		// ensure piece rotated correctly
   		for (int i = 0; i < piece.getLocations().length; i++) {
   			Point p = piece.getLocations()[i];
@@ -234,11 +280,11 @@ public class TetrisTests {
   			}
   		}
   	}
-  
+
   	/*
-  +	 * 
+  +	 *
   +	 * Places LShape on fully set grid, makes sure shape wont rotate
-  +	 * 
+  +	 *
   +	 */
   	@Test
   	public void gridLockedRotate() {
@@ -253,58 +299,58 @@ public class TetrisTests {
   		}
   		assertFalse(piece.canRotate());
   	}
-  
-  	
-  	/*
-  +	 * 
-  +	 * 
-  +	 * Kept this very similar to one from class website
-  +	 * changed static type of array to AbstractPiece 
-  +	 * - Why? Because not every Piece will rotate, no need for 
-  +	 * for canRotate method inside Piece
-  +	 * 
-  +	 * Also modified TShapes setRow/setCol to reflect
-  +	 * our rotate method design
-  +	 */
-  	@Test
-  	public void testRotate() {
-  		Grid g = new Grid();
-  
-  		int row = 5, col = 5;
-  		AbstractPiece[] pieces = { new BarShape(row, col, g), new LShape(row, col, g), new ZShape(row, col, g),
-  				new TShape(row, col, g), new JShape(row, col, g), new SShape(row, col, g) };
-  
-  		for (AbstractPiece p : pieces) {
-  			System.out.println(p.getClass());
-  
-  			// The piece should be able to rotate
-  			assertTrue(p.canRotate());
-  			// Place a square next to the piece to prevent it from rotating
-  			int setRow, setCol;
-  			if (p.getClass() == BarShape.class) {
-  				setRow = row + 1;
-  				setCol = col;
-  			} else if (p.getClass() == LShape.class) {
-  				setRow = row;
-  				setCol = col - 1;
-  			} else if (p.getClass() == ZShape.class) {
-  				setRow = row + 1;
-  				setCol = col - 1;
-  			} else if (p.getClass() == TShape.class) {
-  				setRow = row - 1;
-  				setCol = col;
-  			} else if (p.getClass() == JShape.class) {
-  				setRow = row;
-  				setCol = col - 1;
-  			} else { // SShape
-  				setRow = row;
-  				setCol = col - 1;
-  			}
-  			g.set(setRow, setCol, Color.GREEN);
-  			assertFalse(p.canRotate());
-  
-  			// clear the square for the next piece
-  			g.set(setRow, setCol, Grid.EMPTY);
-  		}
-  	}
+
+
+//  	/**
+//  	 *
+//  	 *
+//  	 * Kept this very similar to one from class website
+//  	 * changed static type of array to AbstractPiece
+//  	 * - Why? Because not every Piece will rotate, no need for
+//  	 * for canRotate method inside Piece
+//  	 *
+//  	 * Also modified TShapes setRow/setCol to reflect
+//  	 * our rotate method design
+//  	 */
+//  	@Test
+//  	public void testRotate() {
+//  		Grid g = new Grid();
+//
+//  		int row = 5, col = 5;
+//  		AbstractPiece[] pieces = { new BarShape(row, col, g), new LShape(row, col, g), new ZShape(row, col, g),
+//  				new TShape(row, col, g), new JShape(row, col, g), new SShape(row, col, g) };
+//
+//  		for (AbstractPiece p : pieces) {
+//  			System.out.println(p.getClass());
+//
+//  			// The piece should be able to rotate
+//  			assertTrue(p.canRotate());
+//  			// Place a square next to the piece to prevent it from rotating
+//  			int setRow, setCol;
+//  			if (p.getClass() == BarShape.class) {
+//  				setRow = row + 1;
+//  				setCol = col;
+//  			} else if (p.getClass() == LShape.class) {
+//  				setRow = row;
+//  				setCol = col - 1;
+//  			} else if (p.getClass() == ZShape.class) {
+//  				setRow = row + 1;
+//  				setCol = col - 1;
+//  			} else if (p.getClass() == TShape.class) {
+//  				setRow = row - 1;
+//  				setCol = col;
+//  			} else if (p.getClass() == JShape.class) {
+//  				setRow = row;
+//  				setCol = col - 1;
+//  			} else { // SShape
+//  				setRow = row;
+//  				setCol = col - 1;
+//  			}
+//  			g.set(setRow, setCol, Color.GREEN);
+//  			assertFalse(p.canRotate());
+//
+//  			// clear the square for the next piece
+//  			g.set(setRow, setCol, Grid.EMPTY);
+//  		}
+//  	}
 }

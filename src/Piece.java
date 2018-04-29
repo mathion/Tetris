@@ -15,4 +15,6 @@ public interface Piece {
   Point[] getLocations();
 
   void draw(Graphics g);
+
+  boolean canRotate();
 }
